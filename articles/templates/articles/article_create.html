@@ -1,0 +1,112 @@
+{% extends 'base_layout.html' %}
+
+	{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Articles Create</title>
+	<link rel="stylesheet" type="text/css" href="/static/style.css">
+<style>
+	.main1{
+		color: white;
+		background-image: linear-gradient(to right,#2963A2, #4CAABC, #72C2C9);
+		border-radius: 10px;
+	}
+	h2{
+		font-size:40px;
+		padding: 20px;
+	}
+	h3{
+		font-size:25px;
+		content:center;
+	}
+	.create-article {
+		display:block;
+	}
+	.create-article .site-form {
+		font-size:20px;
+    		
+	}
+	.create-article .site-form input{
+  		max-width: 200px;
+ 		width: 40px;
+  		height: 40px;
+  		outline: none;
+  		margin: 5px;
+  		margin-left:10px;
+  		transition: .5s;
+  		border: none;
+  		border-radius: 40px;
+  		padding: 10px;
+  		text-align:center;
+  		overflow: hidden;
+ 		white-space: nowrap;
+		color: black;
+  		text-overflow: ellipsis;
+  		transform: rotate(0);
+  		background-color: rgb(253, 253, 253);
+  		font-size:20px;
+	}
+	.create-article .site-form input:focus {
+  		width: 150px;
+  		transform: rotate(0);
+	}
+    textarea{
+        border-radius: 50px;
+        margin:10px;
+        display: flex;
+  		flex-wrap: wrap;
+  		padding:30px;
+  		font-size:20px;
+  		resize: vertical;
+		color: black;
+        box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,  rgba(0, 0, 0, 0.06) 0px 4px 2px,  rgba(0, 0, 0, 0.06) 0px 8px 4px,  rgba(0, 0, 0, 0.06) 0px 16px 8px,  rgba(0, 0, 0, 0.06) 0px 32px 16px;
+	}
+	.create-article input[name=""]{
+		width:90%;
+		height:50px;
+		margin-top:10px;
+		background:rgba(198, 198, 208, 0.622);
+		color:rgb(5, 5, 5);
+		cursor: pointer;
+		margin-left:5.2cm;
+		transform: rotate(0);
+	}
+	.create-article input[name="thumb"]{
+ 		width: 150px;
+  		height: 40px;
+  		border-radius: 20px;
+		color: black;
+  		background-color: rgb(253, 253, 253);
+  		color:black;
+  		font-size:20px;
+	}
+	.create-article input[name=""]:hover{
+		background-color: #2963A2;
+	}
+	.main1{
+		background-color: rgba(0, 0, 255, 0.618);
+		border-radius: 10px;
+		margin: 10px;
+		border: none;
+	}
+</style>
+</head>
+<body>
+	<div class="main1">
+	<div class="main2">
+		<div class="create-article">
+			<h2>Create an Awesome Article</h2>
+			<form class="site-form" action="{% url 'articles:create' %}" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+
+				{{ form }}
+				<input type="submit" name="" value="Create">
+			</form>
+		</div>
+		</div>
+		</div>
+</body>
+</html>
+	{% endblock %}

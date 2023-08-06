@@ -1,0 +1,74 @@
+{%extends 'base_layout.html'%}
+	{% block content %}
+		
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Articles</title>
+	<link rel="stylesheet" type="text/css" href="/static/style.css">
+	<style>
+
+		body{
+			background-color: white;
+		}
+		.main{
+			background-image: linear-gradient(to right,#2963A2, #4CAABC, #72C2C9);
+			border-radius: 10px;
+		}
+		h1{
+			color:rgb(59, 2, 74);
+			font-size:50px;
+			margin-left:30px;
+			margin-top:10px;
+		}
+		.articles{
+			font-size:20px;
+			margin-left:60px;
+			display:grid;
+			grid-template-columns: 1fr;
+			grid-gap: 30px;
+			margin-top:30px;
+			margin-right:60px;	
+		}
+		p{
+			margin-left:20px;
+		}
+		.article{
+			position:relative;
+			backdrop-filter: blur(7px) saturate(200%);
+   			-webkit-backdrop-filter: blur(7px) saturate(200%);
+   			background-color: rgba(76, 104, 157, 0.484);
+   			border-radius: 12px;
+   			border: 1px solid rgba(255, 255, 255, 0.125);
+			margin: 10px;
+			padding: 20px;
+			
+		}
+		.auth{
+			margin-right:20px;
+			background-color:red;
+			color:white;
+			padding: 10px;
+			background: rgba(74, 57, 153, 0.358);
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			border-radius:20px;
+		}
+		
+	</style>
+	<div class="main">
+	<h1>Articles</h1>
+	<div class="articles">
+		{% for article in articles %}
+			<div class="article">
+				<h2><a href="{% url 'articles:detail' slug=article.slug %}">{{article.title}}</a></h2>
+				<p>{{article.snippet}}</p>
+				<p>{{article.date}}</p>
+				<p class="auth">added by {{article.author.username}}</p>
+			</div>
+		{% endfor %}
+	</div>
+	</div>
+	{% endblock %}
